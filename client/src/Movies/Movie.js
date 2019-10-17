@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+import { Link } from 'react-router-dom'
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -32,9 +33,14 @@ export default class Movie extends React.Component {
   };
 
   render() {
+
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
     }
+
+    const location = this.props.location.pathname;
+
+    // console.log(this.props, this.state.movie)
 
     return (
       <div className="save-wrapper">
@@ -42,6 +48,18 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
+
+        {/* // * LINK TO UPDATING SECTION
+        */}
+        {
+          location.includes('/movies/') &&
+          <Link
+            className="update-button"
+            to={`/movies-update/${this.state.movie.id}`}
+          >
+            Update
+          </Link>
+        }
       </div>
     );
   }

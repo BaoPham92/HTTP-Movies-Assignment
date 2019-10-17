@@ -21,6 +21,12 @@ const App = () => {
           return <Movie {...props} addToSavedList={addToSavedList} />;
         }}
       />
+      <Route
+        path="/movies-update/:id"
+        render={props => {
+          return <Movie {...props} addToSavedList={addToSavedList} />;
+        }}
+      />
     </>
   );
 };
